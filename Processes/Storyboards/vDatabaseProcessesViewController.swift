@@ -61,6 +61,12 @@ class vDatabaseProcessesViewController: NSViewController {
         self.tableView.reloadData();
     }
     
+    func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
+        guard let result = change.newValue as? Error  else {
+            return;
+        }
+        self.showError(onMainThread: result);
+    }
 }
 
 
@@ -93,7 +99,8 @@ extension vDatabaseProcessesViewController: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.preferences.observe(\.sort, changeHandler: self.sortChanged)
+            self.preferences.observe(\.sort, changeHandler: self.sortChanged),
+            self.errorObject.observe(\.error, options: [.initial, .new], changeHandler: self.errorChanged)
         ]
     }
     
