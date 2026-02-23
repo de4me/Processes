@@ -21,6 +21,10 @@ class ProcessesObject: NSObject {
     
     @objc dynamic var selectedRow: Int;
     
+    var hasSession: Bool {
+        self.session != nil;
+    }
+    
     var session: SessionRecord? {
         didSet {
             guard let session = self.session else {
@@ -100,6 +104,9 @@ class ProcessesObject: NSObject {
                 return;
             }
             self.fetchController.fetchRequest.prepare(sort: sort);
+            guard hasSession else {
+                return;
+            }
             try self.fetchController.performFetchAndNotify();
         }
         catch {
