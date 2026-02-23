@@ -11,15 +11,12 @@ import Cocoa;
 extension NSViewController {
     
     func splitViewController<T: NSViewController>(of type: T.Type) -> NSViewController? {
-        guard let parent = self.parent as? NSSplitViewController else {
+        guard let parent = self.parent as? NSSplitViewController,
+              let item = parent.splitViewItems.first(where: {$0.viewController is T})
+        else {
             return nil;
         }
-        for current in parent.splitViewItems {
-            if current.viewController is T {
-                return current.viewController;
-            }
-        }
-        return nil;
+        return item.viewController;
     }
     
     @objc private func showError(_ error: Error) {
