@@ -50,11 +50,7 @@ class vDatabaseProcessesViewController: NSViewController {
     }
     
     private func updateSession() {
-        guard let session = self.representedObject as? SessionRecord else {
-            return;
-        }
-        self.processesObject.fetch(session: session);
-        self.tableView.reloadData();
+        self.processesObject.session = self.representedObject as? SessionRecord;
     }
     
     @IBAction func deleteClick(_ sender: NSButton) {

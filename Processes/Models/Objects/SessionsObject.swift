@@ -49,7 +49,7 @@ class SessionsObject: NSObject {
     
     private func fetch() {
         do {
-            try self.fetchController.performFetch();
+            try self.fetchController.performFetchAndNotify();
         }
         catch {
             self.errorObject.error = error;

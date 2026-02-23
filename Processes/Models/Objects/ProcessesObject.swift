@@ -56,10 +56,10 @@ class ProcessesObject: NSObject {
         super.init();
     }
 
-    func fetch(session: SessionRecord) {
+    private func fetch(session: SessionRecord) {
         do {
             self.fetchController.fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(DBProcess.session), session.id);
-            try self.fetchController.performFetch();
+            try self.fetchController.performFetchAndNotify();
         }
         catch {
             self.errorObject.error = error;
@@ -100,7 +100,7 @@ class ProcessesObject: NSObject {
                 return;
             }
             self.fetchController.fetchRequest.prepare(sort: sort);
-            try self.fetchController.performFetch();
+            try self.fetchController.performFetchAndNotify();
         }
         catch {
             self.errorObject.error = error;

@@ -50,3 +50,14 @@ extension NSFetchRequest where ResultType == DBProcess {
     }
     
 }
+
+
+extension NSFetchedResultsController<DBProcess> {
+    
+    func performFetchAndNotify() throws {
+        self.delegate?.controllerWillChangeContent?(self as! NSFetchedResultsController<any NSFetchRequestResult>);
+        try self.performFetch();
+        self.delegate?.controllerDidChangeContent?(self as! NSFetchedResultsController<any NSFetchRequestResult>);
+    }
+    
+}

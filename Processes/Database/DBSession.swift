@@ -20,3 +20,14 @@ extension DBSession {
     }
     
 }
+
+
+extension NSFetchedResultsController<DBSession> {
+    
+    func performFetchAndNotify() throws {
+        self.delegate?.controllerWillChangeContent?(self as! NSFetchedResultsController<any NSFetchRequestResult>);
+        try self.performFetch();
+        self.delegate?.controllerDidChangeContent?(self as! NSFetchedResultsController<any NSFetchRequestResult>);
+    }
+    
+}
