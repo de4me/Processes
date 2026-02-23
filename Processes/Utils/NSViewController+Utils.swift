@@ -1,0 +1,39 @@
+//
+//  NSViewController+Utils.swift
+//  Processes
+//
+//  Created by DE4ME on 20.02.2026.
+//
+
+import Cocoa;
+
+
+extension NSViewController {
+    
+    func splitViewController<T: NSViewController>(of type: T.Type) -> NSViewController? {
+        guard let parent = self.parent as? NSSplitViewController else {
+            return nil;
+        }
+        for current in parent.splitViewItems {
+            if current.viewController is T {
+                return current.viewController;
+            }
+        }
+        return nil;
+    }
+    
+    @objc private func showError(_ error: Error) {
+        guard let window = self.view.window else {
+            return;
+        }
+        window.presentError(error);
+    }
+    
+    func showError(onMainThread error: Error) {
+        if Thread.isMainThread {
+            self.showError(error);
+        } else {
+            self.performSelector(onMainThread: #selector(self.showError(_:)), with: error, waitUntilDone: false);
+        }
+    }
+}
