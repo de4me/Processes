@@ -12,7 +12,7 @@ class vTasksViewController: NSViewController {
     
     @IBOutlet var tableView: NSTableView!;
     
-    @IBOutlet var runningApplications: TasksObject!;
+    @IBOutlet var tasksObject: TasksObject!;
     @IBOutlet var preferences: TaskViewPreferences!;
     @IBOutlet var errorObject: ErrorObject!;
     
@@ -32,25 +32,25 @@ class vTasksViewController: NSViewController {
         super.viewWillAppear();
         self.preferences.load();
         self.registerObservers();
-        self.runningApplications.registerObservers();
-        self.runningApplications.startTimers();
-        self.runningApplications.refresh();
+        self.tasksObject.registerObservers();
+        self.tasksObject.startTimers();
+        self.tasksObject.refresh();
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear();
-        self.runningApplications.stopTimers();
-        self.runningApplications.unregisterObservers();
+        self.tasksObject.stopTimers();
+        self.tasksObject.unregisterObservers();
         self.unregisterObservers();
         self.preferences.save();
     }
     
     @IBAction func refreshClick(_ sender: Any?) {
-        self.runningApplications.refresh();
+        self.tasksObject.refresh();
     }
     
     @IBAction func saveDocument(_ sender: Any?) {
-        self.runningApplications.save();
+        self.tasksObject.save();
     }
     
     private func tasksChanged(_ dataSource: TasksObject, change: NSKeyValueObservedChange<[ApplicationObject]>) {
@@ -71,7 +71,7 @@ extension vTasksViewController: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.runningApplications.observe(\.applications, options: [.initial, .new], changeHandler: self.tasksChanged),
+            self.tasksObject.observe(\.applications, options: [.initial, .new], changeHandler: self.tasksChanged),
             self.errorObject.observe(\.error, options: [.initial, .new], changeHandler: self.errorChanged)
         ]
     }

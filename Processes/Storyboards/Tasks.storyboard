@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="yZ0-Yr-bze">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +41,7 @@
                                 <rect key="frame" x="20" y="58" width="478" height="192"/>
                                 <clipView key="contentView" id="Ijc-9D-Cmh">
                                     <rect key="frame" x="1" y="1" width="476" height="190"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="Tasks" rowHeight="24" headerView="0dU-tB-8dF" id="BEC-9G-7Lx">
                                             <rect key="frame" x="0.0" y="0.0" width="537" height="162"/>
@@ -233,8 +232,8 @@
                     <connections>
                         <outlet property="errorObject" destination="bAx-rW-coB" id="bAn-aK-1lo"/>
                         <outlet property="preferences" destination="jIJ-Rn-Udq" id="qeA-DI-sqt"/>
-                        <outlet property="runningApplications" destination="PEp-7L-NhQ" id="X93-XX-c7b"/>
                         <outlet property="tableView" destination="BEC-9G-7Lx" id="0nK-qL-cw9"/>
+                        <outlet property="tasksObject" destination="PEp-7L-NhQ" id="X93-XX-c7b"/>
                     </connections>
                 </viewController>
                 <customObject id="wI9-1f-ilS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
