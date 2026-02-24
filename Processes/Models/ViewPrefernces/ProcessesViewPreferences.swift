@@ -9,7 +9,7 @@ import Cocoa;
 
 
 
-final class ProcessesViewPreferences: NSObject, Codable, SortColumnProtocol {
+final class ProcessesViewPreferences: NSObject, Codable {
     
     enum CodingKeys: CodingKey, CaseIterable {
         case sort;
@@ -18,10 +18,7 @@ final class ProcessesViewPreferences: NSObject, Codable, SortColumnProtocol {
     @objc dynamic var sort: SortObject = .init(column: .name);
     
     override func setNilValueForKey(_ key: String) {
-        switch key {
-        default:
-            break;
-        }
+        
     }
     
     override init() {
@@ -36,12 +33,30 @@ final class ProcessesViewPreferences: NSObject, Codable, SortColumnProtocol {
 }
 
 
-extension ProcessesViewPreferences: PreferencesProtocol {
+extension ProcessesViewPreferences: CodingKeysProtocol {
     
-    func preferenceKeys() -> [CodingKey] {
+    func codingKeys() -> [any CodingKey] {
         CodingKeys.allCases;
     }
     
 }
 
 
+extension ProcessesViewPreferences: CodingNameProtocol {
+    
+}
+
+
+extension ProcessesViewPreferences: ObjectAssigningProtocol {
+    
+}
+
+
+extension ProcessesViewPreferences: LoadAndSaveProtocol {
+    
+}
+
+
+extension ProcessesViewPreferences: SortColumnProtocol {
+    
+}

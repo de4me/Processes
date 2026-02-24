@@ -8,7 +8,7 @@
 import Cocoa;
 
 
-final class TaskViewPreferences: NSObject, Codable, SortColumnProtocol {
+final class TaskViewPreferences: NSObject, Codable {
     
     enum CodingKeys: CodingKey, CaseIterable {
         case refreshInterval;
@@ -40,12 +40,30 @@ final class TaskViewPreferences: NSObject, Codable, SortColumnProtocol {
 }
 
 
-extension TaskViewPreferences: PreferencesProtocol {
+extension TaskViewPreferences: CodingKeysProtocol {
     
-    func preferenceKeys() -> [CodingKey] {
+    func codingKeys() -> [any CodingKey] {
         CodingKeys.allCases;
     }
     
 }
 
 
+extension TaskViewPreferences: CodingNameProtocol {
+    
+}
+
+
+extension TaskViewPreferences: ObjectAssigningProtocol {
+    
+}
+
+
+extension TaskViewPreferences: LoadAndSaveProtocol {
+    
+}
+
+
+extension TaskViewPreferences: SortColumnProtocol {
+    
+}
