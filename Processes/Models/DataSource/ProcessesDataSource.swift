@@ -29,7 +29,7 @@ extension ProcessesDataSource: NSTableViewDataSource {
         else {
             return nil;
         }
-        return processesObject.objectValue(for: column, at: row);
+        return self.processesObject.objectValue(for: column, at: row);
     }
     
 }
