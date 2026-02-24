@@ -10,7 +10,7 @@ import Cocoa;
 
 class TasksDataSource: NSObject {
     
-    @IBOutlet var tasks: TasksObject!;
+    @IBOutlet var tasksObject: TasksObject!;
 
 }
 
@@ -18,7 +18,7 @@ class TasksDataSource: NSObject {
 extension TasksDataSource : NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        self.tasks.applications.count;
+        self.tasksObject.applications.count;
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -27,7 +27,7 @@ extension TasksDataSource : NSTableViewDataSource {
         else {
             return nil;
         }
-        return self.tasks.objectValue(for: column, at: row);
+        return self.tasksObject.objectValue(for: column, at: row);
     }
     
 }

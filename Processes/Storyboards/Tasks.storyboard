@@ -239,7 +239,7 @@
                 <customObject id="wI9-1f-ilS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="EDq-sf-2ka" customClass="TasksDataSource" customModule="Processes" customModuleProvider="target">
                     <connections>
-                        <outlet property="tasks" destination="PEp-7L-NhQ" id="zBA-Ca-4vf"/>
+                        <outlet property="tasksObject" destination="PEp-7L-NhQ" id="zBA-Ca-4vf"/>
                     </connections>
                 </customObject>
                 <customObject id="jIJ-Rn-Udq" customClass="TaskViewPreferences" customModule="Processes" customModuleProvider="target"/>
