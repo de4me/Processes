@@ -10,7 +10,7 @@
         <scene sceneID="3bQ-fr-yEg">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="XiQ-wx-HOP" sceneMemberID="viewController">
-                    <window key="window" separatorStyle="none" allowsToolTipsWhenApplicationIsInactive="NO" restorable="NO" hidesOnDeactivate="YES" visibleAtLaunch="NO" frameAutosaveName="taskinfo" animationBehavior="default" tabbingIdentifier="taskinfo" titleVisibility="hidden" id="ZCh-MI-UTk">
+                    <window key="window" separatorStyle="none" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="taskinfo" animationBehavior="default" tabbingIdentifier="taskinfo" titleVisibility="hidden" id="ZCh-MI-UTk">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <rect key="contentRect" x="1366" y="699" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2240" height="1235"/>
