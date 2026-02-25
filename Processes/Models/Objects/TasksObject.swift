@@ -14,10 +14,15 @@ class TasksObject: NSObject {
     @IBOutlet var errorObject: ErrorObject!;
     
     @objc dynamic private(set) var applications: [ApplicationObject];
+    @objc dynamic var selectedApplication: ApplicationObject?;
     
     internal var observationArray: [NSKeyValueObservation];
     private var database: sDatabase;
     private var timer: Timer?;
+    
+    var count: Int {
+        self.applications.count;
+    }
     
 #if DEBUG
     deinit {
@@ -51,6 +56,10 @@ class TasksObject: NSObject {
     
     func save() {
         self.database.save(applications: self.applications, completionHandler: self.saveHandler);
+    }
+    
+    subscript (_ index: Int) -> ApplicationObject {
+        self.applications[index];
     }
     
     @objc private func timerHandler(_ timer: Timer) {

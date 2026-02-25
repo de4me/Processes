@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="yZ0-Yr-bze">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,7 +42,7 @@
                                 <rect key="frame" x="20" y="58" width="478" height="192"/>
                                 <clipView key="contentView" id="Ijc-9D-Cmh">
                                     <rect key="frame" x="1" y="1" width="476" height="190"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="Tasks" rowHeight="24" headerView="0dU-tB-8dF" id="BEC-9G-7Lx">
                                             <rect key="frame" x="0.0" y="0.0" width="537" height="162"/>
@@ -100,6 +101,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="taskInfoClick:" target="hmx-ld-OOR" id="dd0-xY-yr0"/>
                                                 <outlet property="dataSource" destination="EDq-sf-2ka" id="6yU-OV-kz2"/>
                                                 <outlet property="delegate" destination="hmx-ld-OOR" id="Qr5-2G-7Os"/>
                                             </connections>
@@ -234,6 +236,7 @@
                         <outlet property="preferences" destination="jIJ-Rn-Udq" id="qeA-DI-sqt"/>
                         <outlet property="tableView" destination="BEC-9G-7Lx" id="0nK-qL-cw9"/>
                         <outlet property="tasksObject" destination="PEp-7L-NhQ" id="X93-XX-c7b"/>
+                        <segue destination="d3A-zf-Ce6" kind="modal" identifier="taskinfo" id="wTQ-4q-xUL"/>
                     </connections>
                 </viewController>
                 <customObject id="wI9-1f-ilS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -252,7 +255,15 @@
                 <customObject id="bAx-rW-coB" customClass="ErrorObject" customModule="Processes" customModuleProvider="target"/>
                 <userDefaultsController representsSharedInstance="YES" id="cFh-xE-Ies"/>
             </objects>
-            <point key="canvasLocation" x="-171" y="460"/>
+            <point key="canvasLocation" x="-171" y="477"/>
+        </scene>
+        <!--TaskInfo-->
+        <scene sceneID="BKR-dT-cZg">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="taskinfo" storyboardName="TaskInfo" id="d3A-zf-Ce6" sceneMemberID="viewController"/>
+                <customObject id="ppi-9V-jVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-171" y="790"/>
         </scene>
     </scenes>
     <resources>

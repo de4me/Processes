@@ -53,6 +53,19 @@ class vTasksViewController: NSViewController {
         self.tasksObject.save();
     }
     
+    @IBAction func taskInfoClick(_ sender: Any?) {
+        self.performSegue(withIdentifier: SegueName.TaskInfo, sender: sender);
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        switch segue.destinationController {
+        case let controller as NSWindowController where segue.identifier == SegueName.TaskInfo:
+            controller.contentViewController?.representedObject = self.tasksObject.selectedApplication;
+        default:
+            break;
+        }
+    }
+    
     private func tasksChanged(_ dataSource: TasksObject, change: NSKeyValueObservedChange<[ApplicationObject]>) {
         self.tableView.reloadData();
     }
@@ -94,6 +107,15 @@ extension vTasksViewController: NSTableViewDelegate {
             return;
         }
         self.preferences.sortColumn = column;
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let row = self.tableView.selectedRow;
+        guard row >= 0, row < self.tasksObject.count else {
+            self.tasksObject.selectedApplication = nil;
+            return;
+        }
+        self.tasksObject.selectedApplication = self.tasksObject[row];
     }
     
 }

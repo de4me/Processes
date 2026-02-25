@@ -15,12 +15,18 @@ class ApplicationObject: NSObject, Codable {
     let identifier: String;
     let pid: pid_t;
     let date: Date;
+    let architecture: Int;
+    let bundleURL: URL;
+    let executableURL: URL;
     
-    init(name: String?, identifier: String?, pid: pid_t, date: Date?) {
+    init(name: String?, identifier: String?, pid: pid_t, date: Date?, architecture: Int, bundleURL: URL?, executableURL: URL?) {
         self.name = name ?? "";
         self.identifier = identifier ?? "";
         self.pid = pid
         self.date = date ?? Date();
+        self.architecture = architecture;
+        self.bundleURL = bundleURL ?? URL.rootURL;
+        self.executableURL = executableURL ?? URL.rootURL;
     }
 }
 
@@ -28,10 +34,11 @@ class ApplicationObject: NSObject, Codable {
 extension ApplicationObject {
     
     convenience init(runningApplication: NSRunningApplication) {
-        self.init(name: runningApplication.localizedName, identifier: runningApplication.bundleIdentifier, pid: runningApplication.processIdentifier, date: runningApplication.launchDate);
+        self.init(name: runningApplication.localizedName, identifier: runningApplication.bundleIdentifier, pid: runningApplication.processIdentifier, date: runningApplication.launchDate, architecture: runningApplication.executableArchitecture, bundleURL: runningApplication.bundleURL, executableURL: runningApplication.executableURL);
     }
     
 }
+
 
 extension Array where Element == ApplicationObject {
     
