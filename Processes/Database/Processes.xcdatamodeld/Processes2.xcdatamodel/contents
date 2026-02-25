@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24512" systemVersion="24G517" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DBProcess" representedClassName="DBProcess" elementID="process" syncable="YES" codeGenerationType="class">
+        <attribute name="architecture" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bundleURL" attributeType="String" defaultValueString=""/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="793284240" usesScalarValueType="NO"/>
+        <attribute name="executableURL" attributeType="String" defaultValueString=""/>
+        <attribute name="identifier" attributeType="String" defaultValueString=""/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="pid" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBSession" inverseName="tasks" inverseEntity="DBSession"/>
+    </entity>
+    <entity name="DBSession" representedClassName="DBSession" elementID="session" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="793286640" usesScalarValueType="NO"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DBProcess" inverseName="session" inverseEntity="DBProcess"/>
+    </entity>
+</model>

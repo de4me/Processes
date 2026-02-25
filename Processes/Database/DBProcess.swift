@@ -16,6 +16,9 @@ extension DBProcess {
         self.date = application.date;
         self.pid = application.pid;
         self.identifier = application.identifier;
+        self.architecture = Int32(application.architecture);
+        self.bundleURL = application.bundleURL.relativePath;
+        self.executableURL = application.executableURL.relativePath;
     }
     
 }
