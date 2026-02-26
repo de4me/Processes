@@ -302,11 +302,11 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgO-dS-epQ">
+                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgO-dS-epQ">
                                                 <rect key="frame" x="0.0" y="28" width="211" height="20"/>
                                                 <subviews>
                                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kin-4e-aDP">
-                                                        <rect key="frame" x="-2" y="4" width="79" height="16"/>
+                                                        <rect key="frame" x="-2" y="2" width="79" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Bundle URL:" id="z8H-hu-oam">
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -314,7 +314,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField clipsToBounds="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcR-hf-cRS">
-                                                        <rect key="frame" x="81" y="2" width="104" height="18"/>
+                                                        <rect key="frame" x="81" y="1" width="104" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" placeholder="YES" id="AhS-hZ-gaK"/>
                                                             <constraint firstAttribute="height" constant="18" placeholder="YES" id="hAm-st-CIi"/>
