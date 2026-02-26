@@ -127,7 +127,7 @@ final class sDatabase {
         }
     }
     
-    func delete(objects: [any DatabaseObjectIDProtocol], completionHandler: @escaping (Error?) -> Void) {
+    func delete(objects: [any ObjectIDProtocol], completionHandler: @escaping (Error?) -> Void) {
         self.workQueue.async {
             do {
                 objects.forEach { object in

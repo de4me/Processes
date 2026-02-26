@@ -29,7 +29,7 @@ class SessionRecord: NSObject {
 }
 
 
-extension SessionRecord: DatabaseObjectIDProtocol {
+extension SessionRecord: ObjectIDProtocol {
     
     func objectId() -> NSManagedObjectID {
         self.id;

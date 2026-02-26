@@ -37,7 +37,7 @@ class ProcessRecord: NSObject, ProcessProtocol {
 }
 
 
-extension ProcessRecord: DatabaseObjectIDProtocol {
+extension ProcessRecord: ObjectIDProtocol {
     
     func objectId() -> NSManagedObjectID {
         self.id;
