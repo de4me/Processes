@@ -83,7 +83,7 @@ class vDatabaseProcessesViewController: NSViewController {
         }
     }
     
-    func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
+    private func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
         guard let result = change.newValue as? Error  else {
             return;
         }
