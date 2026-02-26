@@ -8,7 +8,7 @@
 import Cocoa;
 
 
-struct ProcessRecord {
+class ProcessRecord: NSObject {
     
     let id: NSManagedObjectID;
     let name: String;
@@ -28,6 +28,10 @@ struct ProcessRecord {
         self.architecture = Int(process.architecture);
         self.bundleURL = process.bundleURL != nil ? URL(fileURLWithPath: process.bundleURL!) : URL.rootURL;
         self.executableURL = process.executableURL != nil ? URL(fileURLWithPath: process.executableURL!) : URL.rootURL;
+    }
+    
+    func same(_ process: ProcessRecord) -> Bool {
+        self.objectId() == process.objectId();
     }
     
 }

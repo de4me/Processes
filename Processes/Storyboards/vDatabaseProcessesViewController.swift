@@ -49,6 +49,19 @@ class vDatabaseProcessesViewController: NSViewController {
         self.preferences.save();
     }
     
+    private func updateSelectedRow() {
+        let row = self.tableView.selectedRow;
+        guard row >= 0, row < self.processesObject.count else {
+            self.processesObject.process = nil;
+            return;
+        }
+        let process = self.processesObject[row];
+        if let process, let current = self.processesObject.process, process.same(current) {
+            return;
+        }
+        self.processesObject.process = process;
+    }
+    
     private func updateSession() {
         self.processesObject.session = self.representedObject as? SessionRecord;
     }
@@ -64,7 +77,7 @@ class vDatabaseProcessesViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         switch segue.destinationController {
         case let controller as NSWindowController where segue.identifier == SegueName.ProcessInfo:
-            controller.contentViewController?.representedObject = self.processesObject.selectedProcess;
+            controller.contentViewController?.representedObject = self.processesObject.process;
         default:
             break;
         }
@@ -83,6 +96,7 @@ extension vDatabaseProcessesViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<any NSFetchRequestResult>) {
         self.tableView.reloadData();
+        self.updateSelectedRow();
     }
     
 }
@@ -91,7 +105,7 @@ extension vDatabaseProcessesViewController: NSFetchedResultsControllerDelegate {
 extension vDatabaseProcessesViewController: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        self.processesObject.selectedRow = self.tableView.selectedRow;
+        self.updateSelectedRow();
     }
     
     func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {

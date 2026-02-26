@@ -19,29 +19,11 @@ class ProcessesObject: NSObject {
     
     internal var observationArray: [NSKeyValueObservation]
     
-    @objc dynamic var selectedRow: Int;
+    @objc dynamic var process: ProcessRecord?;
+    @objc dynamic var session: SessionRecord?;
     
     var hasSession: Bool {
         self.session != nil;
-    }
-    
-    var selectedProcess: ProcessRecord? {
-        let index = self.selectedRow
-        guard index >= 0, index < self.count,
-            let process = self[index]
-        else {
-            return nil;
-        }
-        return process;
-    }
-    
-    var session: SessionRecord? {
-        didSet {
-            guard let session = self.session else {
-                return;
-            }
-            self.fetch(session: session);
-        }
     }
     
     @IBOutlet var delegate: NSFetchedResultsControllerDelegate? {
@@ -60,7 +42,6 @@ class ProcessesObject: NSObject {
 #endif
     
     override init() {
-        self.selectedRow = -1;
         self.observationArray = [];
         self.database = sDatabase.shared;
         let sortdesc = NSSortDescriptor(key: #keyPath(DBProcess.name), ascending: true);
@@ -81,14 +62,15 @@ class ProcessesObject: NSObject {
     }
     
     private func deleteHandler(_ result: Error?) {
-        guard let result else {
+        if let result {
+            self.errorObject.error = result;
             return;
         }
-        self.errorObject.error = result;
+        self.process = nil;
     }
     
     func delete() {
-        guard let process = self.selectedProcess else {
+        guard let process = self.process else {
             return;
         }
         sDatabase.shared.delete(objects: [process], completionHandler: self.deleteHandler);
@@ -105,6 +87,10 @@ class ProcessesObject: NSObject {
         self.fetchController.fetchedObjects?.count ?? 0;
     }
     
+    func firstIndex(of process: ProcessRecord) -> Int? {
+        self.fetchController.fetchedObjects?.firstIndex(where: {$0.objectID == process.objectId()});
+    }
+    
     private func sortChanged(_ object: ProcessesViewPreferences, _ change: NSKeyValueObservedChange<SortObject>) {
         do {
             guard let sort = change.newValue else {
@@ -119,6 +105,13 @@ class ProcessesObject: NSObject {
         catch {
             self.errorObject.error = error;
         }
+    }
+    
+    private func sessionChanged(_ object: ProcessesObject, _ change: NSKeyValueObservedChange<SessionRecord?>) {
+        guard let session = change.newValue as? SessionRecord else {
+            return;
+        }
+        self.fetch(session: session);
     }
     
 }
@@ -149,7 +142,8 @@ extension ProcessesObject: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.preferences.observe(\.sort, options: [.initial, .new], changeHandler: self.sortChanged)
+            self.preferences.observe(\.sort, options: [.initial, .new], changeHandler: self.sortChanged),
+            self.observe(\.session, options: [.initial, .new], changeHandler: self.sessionChanged)
         ]
     }
     
