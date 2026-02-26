@@ -277,6 +277,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="processInfo:" target="Z4l-7L-Rut" id="3PE-FR-GvO"/>
                                                 <outlet property="dataSource" destination="eIZ-Di-x9p" id="Oy0-g6-IFo"/>
                                                 <outlet property="delegate" destination="Z4l-7L-Rut" id="uVM-TB-YWX"/>
                                             </connections>
@@ -357,6 +358,7 @@
                         <outlet property="processesDataSource" destination="eIZ-Di-x9p" id="67P-hz-RdS"/>
                         <outlet property="processesObject" destination="LE0-ph-0PD" id="Mn3-yh-v3C"/>
                         <outlet property="tableView" destination="NBA-8b-ezC" id="nOR-qU-pfM"/>
+                        <segue destination="mrA-vi-PKv" kind="modal" identifier="processinfo" id="xNr-yb-4Pd"/>
                     </connections>
                 </viewController>
                 <customObject id="cIF-58-Vs1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -376,6 +378,14 @@
                 <customObject id="lU8-hy-M0p" customClass="ProcessesViewPreferences" customModule="Processes" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="233" y="1231"/>
+        </scene>
+        <!--ProcessInfo-->
+        <scene sceneID="PNV-8P-TX5">
+            <objects>
+                <controllerPlaceholder storyboardName="ProcessInfo" id="mrA-vi-PKv" sceneMemberID="viewController"/>
+                <customObject id="vZC-zV-oLU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="1552"/>
         </scene>
     </scenes>
 </document>

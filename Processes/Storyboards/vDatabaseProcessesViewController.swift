@@ -57,6 +57,19 @@ class vDatabaseProcessesViewController: NSViewController {
         self.processesObject.delete();
     }
     
+    @IBAction func processInfo(_ sender: Any?) {
+        self.performSegue(withIdentifier: SegueName.ProcessInfo, sender: sender);
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        switch segue.destinationController {
+        case let controller as NSWindowController where segue.identifier == SegueName.ProcessInfo:
+            controller.contentViewController?.representedObject = self.processesObject.selectedProcess;
+        default:
+            break;
+        }
+    }
+    
     func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
         guard let result = change.newValue as? Error  else {
             return;

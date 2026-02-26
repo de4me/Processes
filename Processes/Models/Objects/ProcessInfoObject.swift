@@ -1,16 +1,16 @@
 //
-//  TaskInfoObject.swift
+//  ProcessInfoObject.swift
 //  Processes
 //
 //  Created by DE4ME on 25.02.2026.
 //
 
-import Cocoa
+import Cocoa;
 
 
-class TaskInfoObject: NSObject {
+class ProcessInfoObject: NSObject {
     
-    @objc dynamic var application: ApplicationObject? {
+    var process: ProcessRecord? {
         didSet {
             prepare();
         }
@@ -34,27 +34,23 @@ class TaskInfoObject: NSObject {
         self.pid = 0;
         self.name = "";
         self.identifier = "";
-        self.architecture = -1;
+        self.architecture = 0;
         self.launchDate = Date.distantPast;
         self.bundleURL = URL.rootURL;
         self.executableURL = URL.rootURL;
-        super.init();
     }
     
     private func prepare() {
-        guard let application = self.application else {
+        guard let process = self.process else {
             return;
         }
-        self.name = application.name;
-        self.pid = application.pid;
-        self.identifier = application.identifier;
-        self.architecture = application.architecture;
-        self.launchDate = application.date;
-        self.bundleURL = application.bundleURL;
-        self.executableURL = application.executableURL;
+        self.name = process.name;
+        self.pid = process.pid;
+        self.identifier = process.identifier;
+        self.architecture = process.architecture;
+        self.launchDate = process.date;
+        self.bundleURL = process.bundleURL;
+        self.executableURL = process.executableURL;
     }
-
+    
 }
-
-
-

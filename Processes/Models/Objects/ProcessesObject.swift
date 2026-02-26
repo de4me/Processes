@@ -25,6 +25,16 @@ class ProcessesObject: NSObject {
         self.session != nil;
     }
     
+    var selectedProcess: ProcessRecord? {
+        let index = self.selectedRow
+        guard index >= 0, index < self.count,
+            let process = self[index]
+        else {
+            return nil;
+        }
+        return process;
+    }
+    
     var session: SessionRecord? {
         didSet {
             guard let session = self.session else {
@@ -78,10 +88,7 @@ class ProcessesObject: NSObject {
     }
     
     func delete() {
-        let index = self.selectedRow
-        guard index >= 0, index < self.count,
-            let process = self[index]
-        else {
+        guard let process = self.selectedProcess else {
             return;
         }
         sDatabase.shared.delete(objects: [process], completionHandler: self.deleteHandler);

@@ -15,6 +15,9 @@ struct ProcessRecord {
     let identifier: String;
     let pid: pid_t;
     let date: Date;
+    let architecture: Int;
+    let bundleURL: URL;
+    let executableURL: URL;
     
     init(process: DBProcess) {
         self.id = process.objectID;
@@ -22,6 +25,9 @@ struct ProcessRecord {
         self.identifier = process.identifier ?? "";
         self.date = process.date ?? Date();
         self.pid = process.pid;
+        self.architecture = Int(process.architecture);
+        self.bundleURL = process.bundleURL != nil ? URL(fileURLWithPath: process.bundleURL!) : URL.rootURL;
+        self.executableURL = process.executableURL != nil ? URL(fileURLWithPath: process.executableURL!) : URL.rootURL;
     }
     
 }

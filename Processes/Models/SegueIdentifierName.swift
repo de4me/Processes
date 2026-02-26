@@ -10,6 +10,7 @@ import Cocoa;
 
 fileprivate enum SegueIdentifierName: String {
     case taskinfo;
+    case processinfo;
 }
 
 
@@ -17,6 +18,7 @@ extension NSViewController {
     
     struct SegueName {
         static let TaskInfo: String = SegueIdentifierName.taskinfo.rawValue;
+        static let ProcessInfo: String = SegueIdentifierName.processinfo.rawValue;
     }
     
 }

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="HKh-H5-J2v">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="GGW-P9-0ii">
+            <objects>
+                <windowController id="HKh-H5-J2v" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" visibleAtLaunch="NO" frameAutosaveName="processinfo" animationBehavior="default" tabbingIdentifier="processinfo" titleVisibility="hidden" id="VO3-hh-cxV">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="359" y="388" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2240" height="1235"/>
+                        <view key="contentView" id="cY2-Ed-bnE">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="HKh-H5-J2v" id="4jl-sN-8PV"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="gLI-gx-Ytf" kind="relationship" relationship="window.shadowedContentViewController" id="m8r-xA-Z1w"/>
+                    </connections>
+                </windowController>
+                <customObject id="I3W-Ir-czg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-229" y="78"/>
+        </scene>
+        <!--Process Info View Controller-->
+        <scene sceneID="y8e-F0-G5V">
+            <objects>
+                <viewController id="gLI-gx-Ytf" customClass="vProcessInfoViewController" customModule="Processes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="t0D-uT-l3Z">
+                        <rect key="frame" x="0.0" y="0.0" width="519" height="201"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdm-fU-KEo">
+                                <rect key="frame" x="20" y="20" width="479" height="161"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNP-Ey-ajZ">
+                                        <rect key="frame" x="0.0" y="72" width="212" height="89"/>
+                                        <subviews>
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hdx-Hc-YJi">
+                                                <rect key="frame" x="-2" y="72" width="204" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" placeholder="YES" id="9r5-cC-GUv"/>
+                                                    <constraint firstAttribute="height" constant="17" placeholder="YES" id="MDl-EG-Fdp"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" id="B2C-3s-Sa1">
+                                                    <font key="font" metaFont="systemBold" size="18"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="mwK-43-5fG" name="value" keyPath="self.name" id="Uiu-Tz-6uM"/>
+                                                </connections>
+                                            </textField>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vth-3j-29B">
+                                                <rect key="frame" x="0.0" y="48" width="212" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TlZ-JU-GvT">
+                                                        <rect key="frame" x="-2" y="0.0" width="108" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Bundle Identifier:" id="zxp-JX-eXD">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sYk-oa-To2">
+                                                        <rect key="frame" x="110" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="7Zd-PU-oFf"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="5Q0-0R-OSL">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.identifier" id="CcC-Mp-f78"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3e-eu-IOz">
+                                                <rect key="frame" x="0.0" y="24" width="187" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WuB-cQ-rIT">
+                                                        <rect key="frame" x="-2" y="0.0" width="83" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Architecture:" id="wcn-yw-7sz">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aiY-NY-GYT">
+                                                        <rect key="frame" x="85" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="8Kz-Ef-840"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="4wH-UN-LMI">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.architecture" id="NWm-4z-sS1">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">ArchitectureTransformation</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vx-ks-DeN">
+                                                <rect key="frame" x="0.0" y="0.0" width="188" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rqu-JL-sBi">
+                                                        <rect key="frame" x="-2" y="0.0" width="84" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Launch Date:" id="Rid-KQ-CHg">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="giV-vE-PtM">
+                                                        <rect key="frame" x="86" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="Pd2-Kn-eR8"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="HYR-Vi-rwg">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.launchDate" id="Qh3-Uo-gKc">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">DateTransformation</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-jm-Y4I">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="64"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aq8-l3-NLY">
+                                                <rect key="frame" x="0.0" y="48" width="133" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ws5-uB-ZcF">
+                                                        <rect key="frame" x="-2" y="0.0" width="29" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="PID:" id="PCb-u2-NVJ">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jfa-bv-LuT">
+                                                        <rect key="frame" x="31" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="HcN-8g-4fj"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="efX-Th-WA7">
+                                                            <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0" negativeFormat="-0" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="Kxf-If-Thw">
+                                                                <attributedString key="attributedStringForZero">
+                                                                    <fragment content="0"/>
+                                                                </attributedString>
+                                                                <decimal key="minimum" value="NaN"/>
+                                                                <decimal key="maximum" value="NaN"/>
+                                                            </numberFormatter>
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.pid" id="o7o-r2-FzX"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMj-aO-3CT">
+                                                <rect key="frame" x="0.0" y="24" width="183" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4ma-qK-xzg">
+                                                        <rect key="frame" x="-2" y="0.0" width="79" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Bundle URL:" id="zCF-0A-Ild">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mG7-7T-Pal">
+                                                        <rect key="frame" x="81" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="Ks9-LO-Je1"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="tpg-jM-Pfq">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.bundleURL" id="t8j-Jp-heo">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">FileURLTransformation</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qh4-cp-nL9">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="16"/>
+                                                <subviews>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="udN-nk-HBP">
+                                                        <rect key="frame" x="-2" y="0.0" width="103" height="16"/>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Executable URL:" id="s2K-di-ksc">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T4w-Hu-qiX">
+                                                        <rect key="frame" x="105" y="0.0" width="104" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" placeholder="YES" id="13C-ce-BEb"/>
+                                                        </constraints>
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" id="hEG-Pj-hMI">
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="mwK-43-5fG" name="value" keyPath="self.executableURL" id="iL8-6u-Irn">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">FileURLTransformation</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sdm-fU-KEo" secondAttribute="trailing" constant="20" symbolic="YES" id="0vq-lK-tP4"/>
+                            <constraint firstItem="sdm-fU-KEo" firstAttribute="leading" secondItem="t0D-uT-l3Z" secondAttribute="leading" constant="20" symbolic="YES" id="7Z1-bh-fF7"/>
+                            <constraint firstItem="sdm-fU-KEo" firstAttribute="top" secondItem="t0D-uT-l3Z" secondAttribute="top" constant="20" symbolic="YES" id="J36-Aa-GXc"/>
+                            <constraint firstAttribute="bottom" secondItem="sdm-fU-KEo" secondAttribute="bottom" constant="20" symbolic="YES" id="p94-28-oMi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="processInfoObject" destination="mwK-43-5fG" id="9xd-sR-tPC"/>
+                    </connections>
+                </viewController>
+                <customObject id="3hs-dB-7q6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="mwK-43-5fG" customClass="ProcessInfoObject" customModule="Processes" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="-229" y="550"/>
+        </scene>
+    </scenes>
+</document>
