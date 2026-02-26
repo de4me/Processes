@@ -8,7 +8,7 @@
 import Cocoa;
 
 
-class ProcessRecord: NSObject {
+class ProcessRecord: NSObject, ProcessProtocol {
     
     let id: NSManagedObjectID;
     let name: String;
