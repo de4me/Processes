@@ -31,14 +31,12 @@ class vDatabaseSessionsViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear();
-        self.registerObservers();
-        self.sessionsObject.registerObservers();
+        self.observationArray = self.registerObservers();
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear();
-        self.sessionsObject.unregisterObservers();
-        self.unregisterObservers();
+        self.observationArray = [];
     }
     
     private func updateSelectedRow() {
@@ -117,12 +115,9 @@ extension vDatabaseSessionsViewController: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray() +
+        self.sessionsObject.registerObservers()
     }
 
 }

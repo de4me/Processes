@@ -18,8 +18,6 @@ class SessionsObject: NSObject {
     
     @objc dynamic var session: SessionRecord?;
     
-    internal var observationArray: [NSKeyValueObservation];
-    
     @IBOutlet var delegate: NSFetchedResultsControllerDelegate? {
         set {
             self.fetchController.delegate = newValue;
@@ -36,7 +34,6 @@ class SessionsObject: NSObject {
 #endif
     
     override init() {
-        self.observationArray = [];
         self.database = sDatabase.shared;
         let sortdesc = NSSortDescriptor(key: #keyPath(DBSession.date), ascending: false);
         let request = DBSession.fetchRequest();
@@ -120,12 +117,8 @@ extension SessionsObject: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray();
     }
     
 }

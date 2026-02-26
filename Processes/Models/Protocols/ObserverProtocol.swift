@@ -9,7 +9,5 @@ import Cocoa;
 
 
 protocol ObserverProtocol {
-    var observationArray: [NSKeyValueObservation] { get set }
-    mutating func registerObservers();
-    mutating func unregisterObservers();
+    func registerObservers() -> [NSKeyValueObservation];
 }

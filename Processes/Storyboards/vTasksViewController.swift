@@ -31,8 +31,7 @@ class vTasksViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear();
         self.preferences.load();
-        self.registerObservers();
-        self.tasksObject.registerObservers();
+        self.observationArray = self.registerObservers();
         self.tasksObject.startTimers();
         self.tasksObject.refresh();
     }
@@ -40,8 +39,7 @@ class vTasksViewController: NSViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear();
         self.tasksObject.stopTimers();
-        self.tasksObject.unregisterObservers();
-        self.unregisterObservers();
+        self.observationArray = [];
         self.preferences.save();
     }
     
@@ -89,12 +87,9 @@ extension vTasksViewController: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray() +
+        self.tasksObject.registerObservers()
     }
     
 }

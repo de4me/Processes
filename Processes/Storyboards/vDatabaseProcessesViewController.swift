@@ -38,14 +38,12 @@ class vDatabaseProcessesViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear();
         self.preferences.load();
-        self.registerObservers();
-        self.processesObject.registerObservers();
+        self.observationArray = self.registerObservers();
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear();
-        self.processesObject.unregisterObservers();
-        self.unregisterObservers();
+        self.observationArray = [];
         self.preferences.save();
     }
     
@@ -126,12 +124,9 @@ extension vDatabaseProcessesViewController: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray() +
+        self.processesObject.registerObservers();
     }
     
 }

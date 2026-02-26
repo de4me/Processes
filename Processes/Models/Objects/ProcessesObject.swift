@@ -17,8 +17,6 @@ class ProcessesObject: NSObject {
     private let database: sDatabase;
     private var fetchController: NSFetchedResultsController<DBProcess>;
     
-    internal var observationArray: [NSKeyValueObservation]
-    
     @objc dynamic var process: ProcessRecord?;
     @objc dynamic var session: SessionRecord?;
     
@@ -42,7 +40,6 @@ class ProcessesObject: NSObject {
 #endif
     
     override init() {
-        self.observationArray = [];
         self.database = sDatabase.shared;
         let sortdesc = NSSortDescriptor(key: #keyPath(DBProcess.name), ascending: true);
         let request = DBProcess.fetchRequest();
@@ -147,12 +144,8 @@ extension ProcessesObject: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray();
     }
     
 }

@@ -16,7 +16,6 @@ class TasksObject: NSObject {
     @objc dynamic private(set) var applications: [ApplicationObject];
     @objc dynamic var selectedApplication: ApplicationObject?;
     
-    internal var observationArray: [NSKeyValueObservation];
     private var database: sDatabase;
     private var timer: Timer?;
     
@@ -32,7 +31,6 @@ class TasksObject: NSObject {
     
     override init() {
         self.applications = [];
-        self.observationArray = [];
         self.database = sDatabase.shared;
     }
     
@@ -115,12 +113,8 @@ extension TasksObject: ObserverProtocol {
         ]
     }
     
-    internal func registerObservers() {
-        self.observationArray = makeArray();
-    }
-    
-    internal func unregisterObservers() {
-        self.observationArray = [];
+    func registerObservers() -> [NSKeyValueObservation] {
+        self.makeArray();
     }
     
 }
