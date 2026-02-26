@@ -35,14 +35,14 @@
             <objects>
                 <viewController id="VKT-wX-nPj" customClass="vTaskInfoViewController" customModule="Processes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="w25-LG-eu1">
-                        <rect key="frame" x="0.0" y="0.0" width="585" height="244"/>
+                        <rect key="frame" x="0.0" y="0.0" width="585" height="272"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQv-sr-jmO">
-                                <rect key="frame" x="20" y="20" width="545" height="204"/>
+                                <rect key="frame" x="20" y="20" width="545" height="232"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HqN-qQ-EQN">
-                                        <rect key="frame" x="0.0" y="104" width="328" height="100"/>
+                                        <rect key="frame" x="0.0" y="132" width="328" height="100"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-mP-VwF">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -219,7 +219,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73O-Gc-4JJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="235" height="96"/>
+                                        <rect key="frame" x="0.0" y="28" width="235" height="96"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCt-ie-Scb">
                                                 <rect key="frame" x="0.0" y="80" width="133" height="16"/>
@@ -314,10 +314,9 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField clipsToBounds="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcR-hf-cRS">
-                                                        <rect key="frame" x="81" y="1" width="104" height="18"/>
+                                                        <rect key="frame" x="81" y="2" width="104" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" placeholder="YES" id="AhS-hZ-gaK"/>
-                                                            <constraint firstAttribute="height" constant="18" placeholder="YES" id="hAm-st-CIi"/>
                                                         </constraints>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" allowsUndo="NO" alignment="left" usesSingleLineMode="YES" id="7UA-DJ-kFK">
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -379,9 +378,8 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField clipsToBounds="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-pI-p4W">
-                                                        <rect key="frame" x="105" y="1" width="104" height="18"/>
+                                                        <rect key="frame" x="105" y="2" width="104" height="16"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="18" placeholder="YES" id="9Hv-g6-jsV"/>
                                                             <constraint firstAttribute="width" constant="100" placeholder="YES" id="wh8-ug-4AJ"/>
                                                         </constraints>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingHead" selectable="YES" allowsUndo="NO" alignment="left" usesSingleLineMode="YES" id="eMq-gW-75Z">
@@ -446,12 +444,95 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ev-am-G4B">
+                                        <rect key="frame" x="0.0" y="0.0" width="296" height="20"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Oda-jR-5ET">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" placeholder="YES" id="RkY-Y3-fIp"/>
+                                                    <constraint firstAttribute="height" constant="20" placeholder="YES" id="t0f-XZ-PAb"/>
+                                                </constraints>
+                                            </customView>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vPa-Mv-z6s">
+                                                <rect key="frame" x="101" y="-7" width="68" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Show" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0BF-nW-6MA">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="wIL-j1-A3D">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">showWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="wIL-j1-A3D" id="rbe-Za-jD6">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">showWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zc0-gY-76J">
+                                                <rect key="frame" x="163" y="-7" width="62" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Hide" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LrE-ez-v3z">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="KG1-gc-ueo">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">hideWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="KG1-gc-ueo" id="wu7-Si-TXr">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">hideWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-PA-bsO">
+                                                <rect key="frame" x="219" y="-7" width="84" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Activate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sJW-Ln-VAG">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="lOF-kt-RsB">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">activateWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="lOF-kt-RsB" id="FRI-5p-My5">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">activateWithProcess:</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -472,7 +553,7 @@
                 <customObject id="3Xu-wc-bxw" customClass="RunningTaskInfoObject" customModule="Processes" customModuleProvider="target"/>
                 <customObject id="1lK-Ny-91b" customClass="CommandObject" customModule="Processes" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-170.5" y="1281.5"/>
+            <point key="canvasLocation" x="-170" y="1312"/>
         </scene>
     </scenes>
     <resources>

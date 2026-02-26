@@ -9,7 +9,7 @@ import Cocoa;
 
 
 
-class ApplicationObject: NSObject, Codable, BrowseProtocol {
+class ApplicationObject: NSObject, Codable, ProcessProtocol {
     
     let name: String;
     let identifier: String;
