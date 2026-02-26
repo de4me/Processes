@@ -113,7 +113,7 @@
                                 <rect key="frame" x="20" y="20" width="158" height="30"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bI3-GC-hMv">
-                                        <rect key="frame" x="0.0" y="0.0" width="158" height="30"/>
+                                        <rect key="frame" x="29" y="0.0" width="129" height="30"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aPF-b5-KUz">
                                                 <rect key="frame" x="-7" y="-2" width="66" height="32"/>
@@ -133,8 +133,8 @@
                                                 </constraints>
                                             </customView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-vT-L90">
-                                                <rect key="frame" x="91" y="-2" width="74" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dwo-Ku-XwQ">
+                                                <rect key="frame" x="91" y="-2" width="45" height="32"/>
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="trash" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dwo-Ku-XwQ">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -301,7 +301,7 @@
                                 <rect key="frame" x="20" y="20" width="556" height="30"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oqf-9y-rzq">
-                                        <rect key="frame" x="411" y="0.0" width="145" height="30"/>
+                                        <rect key="frame" x="440" y="0.0" width="116" height="30"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="P1N-SB-xOf">
                                                 <rect key="frame" x="0.0" y="5" width="77" height="20"/>
@@ -311,8 +311,8 @@
                                                 </constraints>
                                             </customView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wxq-dK-1MY">
-                                                <rect key="frame" x="78" y="-2" width="74" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ngi-mc-KTU">
+                                                <rect key="frame" x="78" y="-2" width="45" height="32"/>
+                                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="trash" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ngi-mc-KTU">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -388,4 +388,7 @@
             <point key="canvasLocation" x="233" y="1552"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="trash" catalog="system" width="15" height="17"/>
+    </resources>
 </document>
