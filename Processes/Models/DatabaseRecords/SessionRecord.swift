@@ -8,7 +8,7 @@
 import CoreData;
 
 
-struct SessionRecord {
+class SessionRecord: NSObject {
     
     let id: NSManagedObjectID;
     let date: Date;
@@ -20,6 +20,10 @@ struct SessionRecord {
     init(session: DBSession) {
         self.id = session.objectID;
         self.date = session.date ?? Date();
+    }
+    
+    func same(_ session: SessionRecord) -> Bool {
+        self.objectId() == session.objectId();
     }
     
 }

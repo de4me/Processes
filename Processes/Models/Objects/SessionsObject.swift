@@ -16,7 +16,7 @@ class SessionsObject: NSObject {
     private var database: sDatabase;
     private var fetchController: NSFetchedResultsController<DBSession>;
     
-    @objc dynamic var selectedRow: Int;
+    @objc dynamic var session: SessionRecord?;
     
     internal var observationArray: [NSKeyValueObservation];
     
@@ -36,7 +36,6 @@ class SessionsObject: NSObject {
 #endif
     
     override init() {
-        self.selectedRow = -1;
         self.observationArray = [];
         self.database = sDatabase.shared;
         let sortdesc = NSSortDescriptor(key: #keyPath(DBSession.date), ascending: false);
@@ -57,28 +56,26 @@ class SessionsObject: NSObject {
     }
     
     private func deleteHandler(_ result: Error?) {
-        guard let result else {
+        if let result {
+            self.errorObject.error = result;
             return;
         }
-        self.errorObject.error = result;
+        self.session = nil;
     }
     
     func delete() {
-        let row = self.selectedRow;
-        guard row >= 0, row < self.count,
-              let session = self[row]
-        else {
+        guard let session = self.session else {
             return;
         }
-        self.selectedRow += 1;
         sDatabase.shared.delete(objects: [session], completionHandler: self.deleteHandler);
     }
     
     private func clearHandler(_ result: Error?) {
-        guard let result else {
+        if let result {
+            self.errorObject.error = result;
             return;
         }
-        self.errorObject.error = result;
+        self.session = nil;
     }
     
     func clear() {
@@ -94,6 +91,10 @@ class SessionsObject: NSObject {
     
     var count: Int {
         self.fetchController.fetchedObjects?.count ?? 0;
+    }
+    
+    func firstIndex(of session: SessionRecord) -> Int? {
+        self.fetchController.fetchedObjects?.firstIndex(where: {$0.objectID == session.objectId()} )
     }
     
 }

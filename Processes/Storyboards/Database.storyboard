@@ -191,7 +191,7 @@
                 </customObject>
                 <customObject id="qxj-k0-dg7" customClass="SessionsObject" customModule="Processes" customModuleProvider="target">
                     <connections>
-                        <outlet property="delegate" destination="lOc-ev-Kv4" id="tYR-g2-vrb"/>
+                        <outlet property="delegate" destination="lOc-ev-Kv4" id="8dM-Bm-tng"/>
                         <outlet property="errorObject" destination="ev3-1S-2Q8" id="ex8-ML-IYI"/>
                     </connections>
                 </customObject>

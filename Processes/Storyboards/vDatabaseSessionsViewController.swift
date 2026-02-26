@@ -41,6 +41,19 @@ class vDatabaseSessionsViewController: NSViewController {
         self.unregisterObservers();
     }
     
+    private func updateSelectedRow() {
+        let row = self.tableView.selectedRow;
+        guard row >= 0, row < self.sessionsObject.count else {
+            self.sessionsObject.session = nil;
+            return;
+        }
+        let session = self.sessionsObject[row];
+        if let session, let current = self.sessionsObject.session, session.same(current) {
+            return;
+        }
+        self.sessionsObject.session = session
+    }
+    
     @IBAction func deleteClick(_ sender: Any?) {
         self.sessionsObject.delete();
     }
@@ -49,15 +62,17 @@ class vDatabaseSessionsViewController: NSViewController {
         self.sessionsObject.clear();
     }
     
-    func selectionChanged(_ object: SessionsObject, _ change: NSKeyValueObservedChange<Int> ) {
-        guard let row = change.newValue,
-              row >= 0, row < self.sessionsObject.count,
-              let session = self.sessionsObject[row],
-              let controller = self.splitViewController(of: vDatabaseProcessesViewController.self)
-        else {
-            return;
+    private func sessionChanged(_ object: SessionsObject, _ change: NSKeyValueObservedChange<SessionRecord?> ) {
+        OperationQueue.main.addOperation {
+            guard let controller = self.splitViewController(of: vDatabaseProcessesViewController.self) else {
+                return;
+            }
+            if let session = change.newValue as? SessionRecord {
+                controller.representedObject = session;
+            } else {
+                self.updateSelectedRow();
+            }
         }
-        controller.representedObject = session;
     }
     
     private func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
@@ -73,6 +88,12 @@ extension vDatabaseSessionsViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<any NSFetchRequestResult>) {
         self.tableView.reloadData();
+        guard let session = self.sessionsObject.session,
+              let row = self.sessionsObject.firstIndex(of: session)
+        else {
+            return;
+        }
+        self.tableView.selectRowIndexes(.init(integer: row), byExtendingSelection: false);
     }
     
 }
@@ -80,8 +101,8 @@ extension vDatabaseSessionsViewController: NSFetchedResultsControllerDelegate {
 
 extension vDatabaseSessionsViewController: NSTableViewDelegate {
     
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        self.sessionsObject.selectedRow = self.tableView.selectedRow;
+    internal func tableViewSelectionDidChange(_ notification: Notification) {
+        self.updateSelectedRow();
     }
     
 }
@@ -91,8 +112,8 @@ extension vDatabaseSessionsViewController: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.sessionsObject.observe(\.selectedRow, options: [.new], changeHandler: self.selectionChanged),
-            self.errorObject.observe(\.error, options: [.initial, .new], changeHandler: self.errorChanged),
+            self.sessionsObject.observe(\.session, options: [.new], changeHandler: self.sessionChanged),
+            self.errorObject.observe(\.error, options: [.new], changeHandler: self.errorChanged),
         ]
     }
     
