@@ -13,6 +13,7 @@ enum SortColumnName: NSString, Codable {
     case indentifier;
     case date;
     case pid;
+    case title;
 }
 
 

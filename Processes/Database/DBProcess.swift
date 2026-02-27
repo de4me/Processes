@@ -36,6 +36,8 @@ extension DBProcess: KeyNameProtocol {
             return #keyPath(DBProcess.pid);
         case .date:
             return #keyPath(DBProcess.date);
+        default:
+            return nil;
         }
     }
     

@@ -103,7 +103,17 @@ extension SessionsObject: ObjectValueProtocol {
         guard let session = self[row] else {
             return nil;
         }
-        return session.title;
+        switch column {
+        case .title where session.title.isEmpty:
+            fallthrough;
+        case .date:
+            return DateFormatter.localizedString(from: session.date, dateStyle: .short, timeStyle: .short);
+        case .title:
+            return session.title;
+        default:
+            return nil;
+        }
+        
     }
     
 }

@@ -12,14 +12,19 @@ class SessionRecord: NSObject {
     
     let id: NSManagedObjectID;
     let date: Date;
-    
-    var title: String {
-        DateFormatter.localizedString(from: self.date, dateStyle: .short, timeStyle: .short);
-    }
+    let title: String;
+    let systemUptime: TimeInterval;
+    let operatingSystemVersion: String;
+    let locked: Bool;
     
     init(session: DBSession) {
         self.id = session.objectID;
-        self.date = session.date ?? Date();
+        let date = session.date ?? Date();
+        self.date = date;
+        self.title = session.title ?? "";
+        self.systemUptime = session.systemUptime;
+        self.operatingSystemVersion = session.operatingSystemVersion ?? "";
+        self.locked = session.locked;
     }
     
     func same(_ session: SessionRecord) -> Bool {

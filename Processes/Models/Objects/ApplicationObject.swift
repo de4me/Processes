@@ -53,6 +53,8 @@ extension Array where Element == ApplicationObject {
                 return self.sorted(by: {$0.date < $1.date})
             case .pid:
                 return self.sorted(by: {$0.pid < $1.pid})
+            default:
+                return self;
             }
         } else {
             switch column.name {
@@ -64,6 +66,8 @@ extension Array where Element == ApplicationObject {
                 return self.sorted(by: {$0.date > $1.date})
             case .pid:
                 return self.sorted(by: {$0.pid > $1.pid})
+            default:
+                return self;
             }
         }
     }

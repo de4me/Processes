@@ -98,6 +98,8 @@ extension TasksObject: ObjectValueProtocol {
             return task.identifier;
         case .date:
             return DateFormatter.localizedString(from: task.date, dateStyle: .short, timeStyle: .short);
+        default:
+            return nil;
         }
     }
     

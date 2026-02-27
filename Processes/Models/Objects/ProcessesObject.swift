@@ -129,6 +129,8 @@ extension ProcessesObject: ObjectValueProtocol {
             return session.identifier;
         case .date:
             return DateFormatter.localizedString(from: session.date, dateStyle: .short, timeStyle: .medium);
+        default:
+            return nil;
         }
     }
     

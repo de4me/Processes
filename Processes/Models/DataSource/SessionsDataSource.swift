@@ -23,7 +23,7 @@ extension SessionsDataSource: NSTableViewDataSource {
     }
 
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return self.sessionsObjects.objectValue(for: .name, at: row);
+        return self.sessionsObjects.objectValue(for: .title, at: row);
     }
     
 }
