@@ -5,12 +5,13 @@
 //  Created by DE4ME on 20.02.2026.
 //
 
+import Cocoa;
 import CoreData;
 
 
 extension DBSession {
     
-    convenience init(applications: [ApplicationObject], context: NSManagedObjectContext) {
+    convenience init(applications: [NSRunningApplication], context: NSManagedObjectContext) {
         self.init(entity: DBSession.entity(), insertInto: context);
         let date = Date();
         self.date = date;

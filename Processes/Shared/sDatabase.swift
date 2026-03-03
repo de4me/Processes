@@ -5,6 +5,7 @@
 //  Created by DE4ME on 20.02.2026.
 //
 
+import Cocoa;
 import CoreData;
 
 
@@ -110,7 +111,7 @@ final class sDatabase {
     }
     #endif
     
-    func save(applications: [ApplicationObject], completionHandler: @escaping (Error?) -> Void) {
+    func save(applications: [NSRunningApplication], completionHandler: @escaping (Error?) -> Void) {
         self.workQueue.async {
             do {
                 let _ = DBSession(applications: applications, context: self.privateContext);

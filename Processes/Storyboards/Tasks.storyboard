@@ -61,7 +61,15 @@
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="localizedName"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="DzP-eh-9pK" name="value" keyPath="arrangedObjects.localizedName" id="gvi-yg-QfI">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
                                                 </tableColumn>
                                                 <tableColumn identifier="pid" editable="NO" width="44" minWidth="10" maxWidth="3.4028234663852886e+38" id="3Pb-KE-Rwh">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="pid">
@@ -81,6 +89,13 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="DzP-eh-9pK" name="value" keyPath="arrangedObjects.processIdentifier" id="epi-T3-sHt">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
                                                 </tableColumn>
                                                 <tableColumn identifier="indentifier" editable="NO" width="114" minWidth="40" maxWidth="1000" id="tCM-mW-d7A">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="identifier">
@@ -92,7 +107,15 @@
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
+                                                    <sortDescriptor key="sortDescriptorPrototype" selector="caseInsensitiveCompare:" sortKey="bundleIdentifier"/>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="DzP-eh-9pK" name="value" keyPath="arrangedObjects.bundleIdentifier" id="Kgj-3S-GQr">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
                                                 </tableColumn>
                                                 <tableColumn identifier="date" editable="NO" width="200" minWidth="10" maxWidth="3.4028234663852886e+38" id="abn-Rv-WgI">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="launch date">
@@ -105,12 +128,21 @@
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <connections>
+                                                        <binding destination="DzP-eh-9pK" name="value" keyPath="arrangedObjects.launchDate" id="IjZ-Z3-gsm">
+                                                            <dictionary key="options">
+                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                <string key="NSValueTransformerName">DateTransformation</string>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
                                                 <action trigger="doubleAction" selector="taskInfoClick:" target="hmx-ld-OOR" id="dd0-xY-yr0"/>
-                                                <outlet property="dataSource" destination="EDq-sf-2ka" id="6yU-OV-kz2"/>
-                                                <outlet property="delegate" destination="hmx-ld-OOR" id="Qr5-2G-7Os"/>
+                                                <binding destination="DzP-eh-9pK" name="content" keyPath="arrangedObjects" id="SBj-Mt-FXf"/>
+                                                <binding destination="DzP-eh-9pK" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="SBj-Mt-FXf" id="KqJ-KY-ALv"/>
+                                                <binding destination="DzP-eh-9pK" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="KqJ-KY-ALv" id="QR5-BI-HdJ"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -173,7 +205,11 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="refreshClick:" target="hmx-ld-OOR" id="kfk-gO-6Fh"/>
+                                                            <binding destination="PEp-7L-NhQ" name="target" keyPath="self" id="Ts0-DM-pwU">
+                                                                <dictionary key="options">
+                                                                    <string key="NSSelectorName">refresh</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -201,7 +237,11 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="saveDocument:" target="hmx-ld-OOR" id="jkd-HU-9uA"/>
+                                                    <binding destination="PEp-7L-NhQ" name="target" keyPath="self" id="syG-bT-ubK">
+                                                        <dictionary key="options">
+                                                            <string key="NSSelectorName">save</string>
+                                                        </dictionary>
+                                                    </binding>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -242,16 +282,12 @@
                         <outlet property="errorObject" destination="bAx-rW-coB" id="bAn-aK-1lo"/>
                         <outlet property="preferences" destination="jIJ-Rn-Udq" id="qeA-DI-sqt"/>
                         <outlet property="tableView" destination="BEC-9G-7Lx" id="0nK-qL-cw9"/>
+                        <outlet property="tasksArrayController" destination="DzP-eh-9pK" id="zgz-iJ-3hQ"/>
                         <outlet property="tasksObject" destination="PEp-7L-NhQ" id="X93-XX-c7b"/>
                         <segue destination="d3A-zf-Ce6" kind="modal" identifier="taskinfo" id="wTQ-4q-xUL"/>
                     </connections>
                 </viewController>
                 <customObject id="wI9-1f-ilS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="EDq-sf-2ka" customClass="TasksDataSource" customModule="Processes" customModuleProvider="target">
-                    <connections>
-                        <outlet property="tasksObject" destination="PEp-7L-NhQ" id="zBA-Ca-4vf"/>
-                    </connections>
-                </customObject>
                 <customObject id="jIJ-Rn-Udq" customClass="TaskViewPreferences" customModule="Processes" customModuleProvider="target"/>
                 <customObject id="PEp-7L-NhQ" customClass="TasksObject" customModule="Processes" customModuleProvider="target">
                     <connections>
@@ -260,6 +296,13 @@
                     </connections>
                 </customObject>
                 <customObject id="bAx-rW-coB" customClass="ErrorObject" customModule="Processes" customModuleProvider="target"/>
+                <arrayController objectClassName="NSRunningApplication" editable="NO" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="DzP-eh-9pK">
+                    <classReference key="objectClass" className="NSRunningApplication"/>
+                    <connections>
+                        <binding destination="PEp-7L-NhQ" name="selectionIndexes" keyPath="selectionIndexes" id="1Sm-wu-wV9"/>
+                        <binding destination="PEp-7L-NhQ" name="contentArray" keyPath="self.applications" id="ahi-g8-x5z"/>
+                    </connections>
+                </arrayController>
                 <userDefaultsController representsSharedInstance="YES" id="cFh-xE-Ies"/>
             </objects>
             <point key="canvasLocation" x="-171" y="477"/>

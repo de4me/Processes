@@ -13,15 +13,11 @@ class TasksObject: NSObject {
     @IBOutlet var preferences: TaskViewPreferences!;
     @IBOutlet var errorObject: ErrorObject!;
     
-    @objc dynamic private(set) var applications: [ApplicationObject];
-    @objc dynamic var selectedApplication: ApplicationObject?;
+    @objc dynamic private(set) var applications: [NSRunningApplication];
+    @objc dynamic var selectionIndexes: IndexSet;
     
     private var database: sDatabase;
     private var timer: Timer?;
-    
-    var count: Int {
-        self.applications.count;
-    }
     
 #if DEBUG
     deinit {
@@ -31,18 +27,12 @@ class TasksObject: NSObject {
     
     override init() {
         self.applications = [];
+        self.selectionIndexes = [];
         self.database = sDatabase.shared;
     }
     
-    private func refreshed() -> [ApplicationObject] {
-        let sort = self.preferences.sort;
-        let tasks = NSWorkspace.shared.runningApplications;
-        let applications = tasks.map { ApplicationObject(runningApplication: $0) }
-        return applications.sorted(by: sort);
-    }
-    
-    func refresh() {
-        self.applications = self.refreshed();
+    @objc func refresh() {
+        self.applications = NSWorkspace.shared.runningApplications;
     }
     
     private func saveHandler(_ result: Error?) {
@@ -52,12 +42,8 @@ class TasksObject: NSObject {
         self.errorObject.error = result;
     }
     
-    func save() {
+    @objc func save() {
         self.database.save(applications: self.applications, completionHandler: self.saveHandler);
-    }
-    
-    subscript (_ index: Int) -> ApplicationObject {
-        self.applications[index];
     }
     
     @objc private func timerHandler(_ timer: Timer) {
@@ -75,34 +61,6 @@ class TasksObject: NSObject {
         self.timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(self.timerHandler(_:)), userInfo: nil, repeats: true);
     }
     
-    private func sortChanged(_ object: TaskViewPreferences, _ change: NSKeyValueObservedChange<SortObject>) {
-        guard let sort = change.newValue else {
-            return;
-        }
-        self.applications = self.applications.sorted(by: sort);
-    }
-    
-}
-
-
-extension TasksObject: ObjectValueProtocol {
-    
-    func objectValue(for column: SortColumnName, at row: Int) -> Any? {
-        let task = self.applications[row];
-        switch column {
-        case .name:
-            return task.name;
-        case .pid:
-            return task.pid;
-        case .indentifier:
-            return task.identifier;
-        case .date:
-            return DateFormatter.localizedString(from: task.date, dateStyle: .short, timeStyle: .short);
-        default:
-            return nil;
-        }
-    }
-    
 }
 
 
@@ -110,8 +68,7 @@ extension TasksObject: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.preferences.observe(\.refreshInterval, options: [.initial, .new], changeHandler: self.refreshIntervalChanged),
-            self.preferences.observe(\.sort, options: [.initial, .new], changeHandler: self.sortChanged)
+            self.preferences.observe(\.refreshInterval, options: [.initial, .new], changeHandler: self.refreshIntervalChanged)
         ]
     }
     

@@ -51,12 +51,12 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="VUk-wa-K1y"/>
                                                 <connections>
-                                                    <binding destination="3Xu-wc-bxw" name="value" keyPath="self.icon" id="0aS-nv-yuT"/>
-                                                    <binding destination="3Xu-wc-bxw" name="hidden" keyPath="self.icon" id="pAC-8h-lul">
+                                                    <binding destination="VKT-wX-nPj" name="hidden" keyPath="self.representedObject.icon" id="uDk-04-hWc">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">NSIsNil</string>
                                                         </dictionary>
                                                     </binding>
+                                                    <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.icon" id="0AV-zj-5ZX"/>
                                                 </connections>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBl-II-NeH">
@@ -74,7 +74,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="3Xu-wc-bxw" name="value" keyPath="self.name" id="roG-Tw-WtB"/>
+                                                            <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.localizedName" id="TqU-iN-hc7"/>
                                                         </connections>
                                                     </textField>
                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EZM-dq-8FA">
@@ -99,7 +99,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <binding destination="3Xu-wc-bxw" name="value" keyPath="self.identifier" id="4QL-nt-LsA"/>
+                                                                    <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.bundleIdentifier" id="8bP-7R-IuB"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -134,7 +134,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <binding destination="3Xu-wc-bxw" name="value" keyPath="self.architecture" id="ipd-va-4Km">
+                                                                    <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.executableArchitecture" id="Zlz-39-TgP">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">ArchitectureTransformation</string>
                                                                         </dictionary>
@@ -173,7 +173,7 @@
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                 </textFieldCell>
                                                                 <connections>
-                                                                    <binding destination="3Xu-wc-bxw" name="value" keyPath="self.launchDate" id="ZOs-lv-bwL">
+                                                                    <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.launchDate" id="YQ6-C5-nrh">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">DateTransformation</string>
                                                                         </dictionary>
@@ -250,7 +250,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="3Xu-wc-bxw" name="value" keyPath="self.pid" id="WU2-BW-uLR"/>
+                                                            <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.processIdentifier" id="fZ4-BT-6wI"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -285,7 +285,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="3Xu-wc-bxw" name="value" keyPath="self.activationPolicy" id="OXF-Kr-84I">
+                                                            <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.activationPolicy" id="dLw-J6-6i9">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">ActivationPolicyTransformation</string>
                                                                 </dictionary>
@@ -324,7 +324,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="3Xu-wc-bxw" name="value" keyPath="self.bundleURL" id="fai-Wc-lUv">
+                                                            <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.bundleURL" id="xmO-SY-mEN">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">FileURLTransformation</string>
                                                                 </dictionary>
@@ -342,14 +342,9 @@
                                                             <constraint firstAttribute="height" constant="20" id="gKU-fo-R0D"/>
                                                         </constraints>
                                                         <connections>
-                                                            <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="dqn-y6-4Ss">
+                                                            <binding destination="VKT-wX-nPj" name="target" keyPath="self.representedObject" id="BIW-GH-Wxe">
                                                                 <dictionary key="options">
-                                                                    <string key="NSSelectorName">browseWithBundle:</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                            <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="dqn-y6-4Ss" id="QT4-3E-1NJ">
-                                                                <dictionary key="options">
-                                                                    <string key="NSSelectorName">browseWithBundle:</string>
+                                                                    <string key="NSSelectorName">browseBundle</string>
                                                                 </dictionary>
                                                             </binding>
                                                         </connections>
@@ -388,7 +383,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="3Xu-wc-bxw" name="value" keyPath="self.executableURL" id="3uJ-rA-zFG">
+                                                            <binding destination="VKT-wX-nPj" name="value" keyPath="self.representedObject.executableURL" id="s3s-1s-Nmb">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">FileURLTransformation</string>
                                                                 </dictionary>
@@ -406,14 +401,9 @@
                                                             <constraint firstAttribute="width" constant="20" id="Ovd-uJ-PQO"/>
                                                         </constraints>
                                                         <connections>
-                                                            <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="o11-Z8-qWL">
+                                                            <binding destination="VKT-wX-nPj" name="target" keyPath="self.representedObject" id="vmW-55-XsR">
                                                                 <dictionary key="options">
-                                                                    <string key="NSSelectorName">browseWithExecutable:</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                            <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="o11-Z8-qWL" id="U1B-Xz-yz4">
-                                                                <dictionary key="options">
-                                                                    <string key="NSSelectorName">browseWithExecutable:</string>
+                                                                    <string key="NSSelectorName">browseExecutable</string>
                                                                 </dictionary>
                                                             </binding>
                                                         </connections>
@@ -461,14 +451,9 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="wIL-j1-A3D">
+                                                    <binding destination="VKT-wX-nPj" name="target" keyPath="self.representedObject" id="B6D-tt-qDD">
                                                         <dictionary key="options">
-                                                            <string key="NSSelectorName">showWithProcess:</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="wIL-j1-A3D" id="rbe-Za-jD6">
-                                                        <dictionary key="options">
-                                                            <string key="NSSelectorName">showWithProcess:</string>
+                                                            <string key="NSSelectorName">unhide</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>
@@ -480,14 +465,9 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="KG1-gc-ueo">
+                                                    <binding destination="VKT-wX-nPj" name="target" keyPath="self.representedObject" id="ZCY-xt-WOo">
                                                         <dictionary key="options">
-                                                            <string key="NSSelectorName">hideWithProcess:</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="KG1-gc-ueo" id="wu7-Si-TXr">
-                                                        <dictionary key="options">
-                                                            <string key="NSSelectorName">hideWithProcess:</string>
+                                                            <string key="NSSelectorName">hide</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>
@@ -499,14 +479,9 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <binding destination="VKT-wX-nPj" name="argument" keyPath="self.representedObject" id="lOF-kt-RsB">
+                                                    <binding destination="VKT-wX-nPj" name="target" keyPath="self.representedObject" id="h8D-wF-XsZ">
                                                         <dictionary key="options">
-                                                            <string key="NSSelectorName">activateWithProcess:</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="1lK-Ny-91b" name="target" keyPath="self" previousBinding="lOF-kt-RsB" id="FRI-5p-My5">
-                                                        <dictionary key="options">
-                                                            <string key="NSSelectorName">activateWithProcess:</string>
+                                                            <string key="NSSelectorName">activateWithOptions:</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>
@@ -545,13 +520,8 @@
                             <constraint firstAttribute="bottom" secondItem="kQv-sr-jmO" secondAttribute="bottom" constant="20" symbolic="YES" id="lPi-Fb-181"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="taskInfoOject" destination="3Xu-wc-bxw" id="pKB-Xk-pUW"/>
-                    </connections>
                 </viewController>
                 <customObject id="si6-jp-Uzb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="3Xu-wc-bxw" customClass="RunningTaskInfoObject" customModule="Processes" customModuleProvider="target"/>
-                <customObject id="1lK-Ny-91b" customClass="CommandObject" customModule="Processes" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-170" y="1312"/>
         </scene>

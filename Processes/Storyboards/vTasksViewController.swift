@@ -15,6 +15,7 @@ class vTasksViewController: NSViewController {
     @IBOutlet var tasksObject: TasksObject!;
     @IBOutlet var preferences: TaskViewPreferences!;
     @IBOutlet var errorObject: ErrorObject!;
+    @IBOutlet var tasksArrayController: NSArrayController!;
     
     internal var observationArray: [NSKeyValueObservation] = [];
     
@@ -43,11 +44,7 @@ class vTasksViewController: NSViewController {
         self.preferences.save();
     }
     
-    @IBAction func refreshClick(_ sender: Any?) {
-        self.tasksObject.refresh();
-    }
-    
-    @IBAction func saveDocument(_ sender: Any?) {
+    @objc func saveDocument(_ sender: Any?) {
         self.tasksObject.save();
     }
     
@@ -58,14 +55,11 @@ class vTasksViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         switch segue.destinationController {
         case let controller as NSWindowController where segue.identifier == SegueName.TaskInfo:
-            controller.contentViewController?.representedObject = self.tasksObject.selectedApplication;
+            controller.contentViewController?.representedObject = self.tasksArrayController.selection;
+            break;
         default:
             break;
         }
-    }
-    
-    private func tasksChanged(_ dataSource: TasksObject, change: NSKeyValueObservedChange<[ApplicationObject]>) {
-        self.tableView.reloadData();
     }
     
     private func errorChanged(_ object: ErrorObject, _ change: NSKeyValueObservedChange<(any Error)?>) {
@@ -82,7 +76,6 @@ extension vTasksViewController: ObserverProtocol {
     
     private func makeArray() -> [NSKeyValueObservation] {
         [
-            self.tasksObject.observe(\.applications, options: [.initial, .new], changeHandler: self.tasksChanged),
             self.errorObject.observe(\.error, options: [.initial, .new], changeHandler: self.errorChanged)
         ]
     }
@@ -90,27 +83,6 @@ extension vTasksViewController: ObserverProtocol {
     func registerObservers() -> [NSKeyValueObservation] {
         self.makeArray() +
         self.tasksObject.registerObservers()
-    }
-    
-}
-
-
-extension vTasksViewController: NSTableViewDelegate {
-    
-    func tableView(_ tableView: NSTableView, didClick tableColumn: NSTableColumn) {
-        guard let column = SortColumnName(columnIdentifier: tableColumn.identifier) else {
-            return;
-        }
-        self.preferences.sortColumn = column;
-    }
-    
-    func tableViewSelectionDidChange(_ notification: Notification) {
-        let row = self.tableView.selectedRow;
-        guard row >= 0, row < self.tasksObject.count else {
-            self.tasksObject.selectedApplication = nil;
-            return;
-        }
-        self.tasksObject.selectedApplication = self.tasksObject[row];
     }
     
 }

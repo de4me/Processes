@@ -5,20 +5,21 @@
 //  Created by DE4ME on 20.02.2026.
 //
 
+import Cocoa;
 import CoreData;
 
 
 extension DBProcess {
     
-    convenience init(application: ApplicationObject, context: NSManagedObjectContext) {
+    convenience init(application: NSRunningApplication, context: NSManagedObjectContext) {
         self.init(entity: DBProcess.entity(), insertInto: context);
-        self.name = application.name;
-        self.date = application.date;
-        self.pid = application.pid;
-        self.identifier = application.identifier;
-        self.architecture = Int32(application.architecture);
-        self.bundleURL = application.bundleURL.relativePath;
-        self.executableURL = application.executableURL.relativePath;
+        self.name = application.localizedName ?? "";
+        self.date = application.launchDate ?? Date();
+        self.pid = application.processIdentifier;
+        self.identifier = application.bundleIdentifier ?? "";
+        self.architecture = Int32(application.executableArchitecture);
+        self.bundleURL = application.bundleURL?.relativePath ?? "";
+        self.executableURL = application.executableURL?.relativePath ?? "";
     }
     
 }
